@@ -7,7 +7,6 @@
 #include <limits>
 #include <ios>
 #include "Queues.h"
-#include "ServiceQueue.h"
 #include "Random.h"
 
 Random my_random;  // Global variable 
@@ -19,9 +18,9 @@ private:
 	int clock;       // current time
 
 	// landing queue --> service queue --> departure queue
-	LandingQueue *landing_queue;
-	ServiceQueue *service_queue;
-	DepartureQueue *departure_queue;
+	Queues *landing_queue;
+	Queues *service_queue;
+	Queues *departure_queue;
 
 	// Function to get user to read in an int between low and high inclusive
 	int read_int(const std::string &prompt, int low, int high)
@@ -53,9 +52,9 @@ private:
 public:
 	
 	Simulator() {
-		landing_queue = new LandingQueue();
-		service_queue = new ServiceQueue();
-		departure_queue = new DepartureQueue();
+		landing_queue = new LandingQueue;
+		service_queue = new ServiceQueue;
+		departure_queue = new DepartureQueue;
 	}
 
 	void enter_data()
